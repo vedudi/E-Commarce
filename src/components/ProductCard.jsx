@@ -1,10 +1,13 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../themes/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductCard = ({data}) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity style={{width: '48%', marginVertical: 14}}>
+    <TouchableOpacity onPress={()=>navigation.navigate("ProductInfo", {productID:data.id})} style={{width: '48%', marginVertical: 14}}>
       <View style={styles.cart}>
         {data.isOff && (
           <View
@@ -15,6 +18,8 @@ const ProductCard = ({data}) => {
         <Image source={data.productImage} style={styles.cartImage} resizeMode='contain' />
       </View>
       <Text style={styles.productText}> {data.productName} </Text>
+      <Text style={{color:Colors.black, opacity:0.6}}> {data.productPrice} ₺ </Text>
+
     </TouchableOpacity>
   );
 };

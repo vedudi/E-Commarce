@@ -11,6 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import {Items} from '../database/Database';
+import SectionHeader from '../components/SectionHeader';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const Home = () => {
   };
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Header />
         <View style={styles.homeContainer}>
           <Text style={styles.title}>Hi-Fi Shop & Service</Text>
@@ -45,40 +46,7 @@ const Home = () => {
           </Text>
         </View>
         <View style={{padding: 16}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: '500',
-                  letterSpacing: 1,
-                }}>
-                Products
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: '400',
-                  color: Colors.black,
-                  opacity: 0.5,
-                  marginLeft: 10,
-                }}>
-                41
-              </Text>
-            </View>
-            <TouchableOpacity>
-              <Text
-                style={{fontSize: 14, color: Colors.blue, fontWeight: '400'}}>
-                See All
-              </Text>
-            </TouchableOpacity>
-          </View>
+        <SectionHeader title={"Products "} count={"41"}/>
           <View
             style={{
               flexDirection: 'row',
@@ -90,6 +58,20 @@ const Home = () => {
             ))}
           </View>
         </View>
+        <View style={{padding: 16}}>
+         <SectionHeader title={"Accessories"} count={"80"}/>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              flexWrap: 'wrap',
+            }}>
+            {accessory.map(data => (
+              <ProductCard key={data.id} data={data} />
+            ))}
+          </View>
+        </View>
+        
       </ScrollView>
     </View>
   );
