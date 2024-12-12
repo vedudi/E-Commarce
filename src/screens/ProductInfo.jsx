@@ -209,11 +209,13 @@ const ProductInfo = () => {
                 </View>
                 <Text>İstanbul Üsküdar {'\n'} 17-0001</Text>
               </View>
+              <TouchableOpacity>
               <Entypo
                 name="chevron-right"
                 size={22}
                 color={Colors.backgroundDark}
-              />
+                />
+                </TouchableOpacity>
             </View>
           </View>
           <View style={{paddingHorizontal: 16}}>

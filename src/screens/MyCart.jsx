@@ -1,9 +1,17 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Items} from '../database/Database';
 import {useNavigation} from '@react-navigation/native';
-import { Colors } from '../themes/Colors';
+import {Colors} from '../themes/Colors';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Cart from '../components/Cart';
 
 const MyCart = () => {
   const [product, setProduct] = useState([]);
@@ -16,7 +24,7 @@ const MyCart = () => {
     let items = await AsyncStorage.getItem('cartItems');
     items = JSON.parse(items);
     console.log(items);
-    
+
     let productData = [];
     if (items) {
       Items.forEach(data => {
@@ -31,9 +39,38 @@ const MyCart = () => {
       setTotal(0);
     }
   };
+
   return (
-    <View>
-      <Text>MyCart</Text>
+    <View
+      style={{
+        backgroundColor: Colors.white,
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+      }}>
+      <ScrollView>
+        <View style={styles.container}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}>
+            <Entypo name="chevron-left" size={20} />
+          </TouchableOpacity>
+          <Text style={styles.orderTitle}>Order Details</Text>
+        </View>
+        <View>
+          {product.length > 0
+            ? product.map(data => (
+                <Cart
+                  key={data.id}
+                  data={data}
+                  product={product}
+                  setProduct={setProduct}
+                  getDataFromDB={getDataFromDB}
+                />
+              ))
+            : null}
+        </View>
+      </ScrollView>
     </View>
   );
 };
