@@ -14,7 +14,7 @@ const Cart = ({data, product, setProduct,getDataFromDB}) => {
     if (itemsArray) {
       let array = itemsArray.filter(item => item !== id);
       await AsyncStorage.setItem('cartItems', JSON.stringify(array));
-      getDataFromDB()
+      getDataFromDB();
     }
   };
   const updateQuantity = (id, type) => {
@@ -92,7 +92,7 @@ const Cart = ({data, product, setProduct,getDataFromDB}) => {
           <TouchableOpacity
             onPress={() => removeItemFromCart(data.id)}
             style={styles.deleteButton}>
-            <MaterialCommunityIcons name="delete" size={16} />
+            <MaterialCommunityIcons name="delete-variant" size={16} />
           </TouchableOpacity>
         </View>
       </View>
