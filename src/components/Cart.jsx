@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../themes/Colors';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -92,7 +92,7 @@ const Cart = ({data, product, setProduct,getDataFromDB}) => {
           <TouchableOpacity
             onPress={() => removeItemFromCart(data.id)}
             style={styles.deleteButton}>
-            <AntDesign name="delete" size={16} />
+            <MaterialCommunityIcons name="delete" size={16} />
           </TouchableOpacity>
         </View>
       </View>

@@ -14,7 +14,6 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {Items} from '../database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import {Colors} from '../themes/Colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -35,6 +34,7 @@ const ProductInfo = () => {
       setProduct(product);
       return;
     }
+  
   };
   const addToCart = async id => {
     let itemArray = await AsyncStorage.getItem('cartItems');
@@ -43,7 +43,7 @@ const ProductInfo = () => {
     array.push(id);
     // console.log("array",array);
     // console.log("itemarray",itemArray);
-    
+
     try {
       await AsyncStorage.setItem('cartItems', JSON.stringify(array));
       navigation.navigate('Home');
@@ -210,12 +210,12 @@ const ProductInfo = () => {
                 <Text>İstanbul Üsküdar {'\n'} 17-0001</Text>
               </View>
               <TouchableOpacity>
-              <Entypo
-                name="chevron-right"
-                size={22}
-                color={Colors.backgroundDark}
+                <Entypo
+                  name="chevron-right"
+                  size={22}
+                  color={Colors.backgroundDark}
                 />
-                </TouchableOpacity>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={{paddingHorizontal: 16}}>
