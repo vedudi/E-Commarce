@@ -41,7 +41,7 @@ const Cart = ({data, product, setProduct,getDataFromDB}) => {
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={data.productImage} />
       </View>
-      <View tyle={styles.productDetail}>
+      <View style={styles.productDetail}>
         <View>
           <Text> {data.productName} </Text>
           <View
