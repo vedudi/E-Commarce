@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Cart = ({data, product, setProduct,getDataFromDB}) => {
+const Cart = ({data, product, setProduct,getDataFromDB,getTotal}) => {
   const navigation = useNavigation();
   const removeItemFromCart = async id => {
     let itemsArray = await AsyncStorage.getItem('cartItems');
@@ -27,6 +27,7 @@ const Cart = ({data, product, setProduct,getDataFromDB}) => {
       return item;
     });
     setProduct(updateProducts);
+    getTotal(updateProducts)
   };
   return (
     <TouchableOpacity
